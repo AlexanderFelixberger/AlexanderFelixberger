@@ -1,4 +1,4 @@
-### Eaii! Meu nome é Alexander :de:
+### Eaii! Meu nome é Alexander :snowflake:
 
 <!--
 **AlexanderFelixberger/AlexanderFelixberger** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
