@@ -9,7 +9,10 @@
 - Eu já trabalhei com Infraestrutura e com suporte e agora buscando mais conhecimento na parte de programação onde estou cada dia mais motivado:fire:
 ###
 
+<hr>
 ::before
+::after
+</hr
 
 ### What's Up! My name is Alexander :snowflake:
 
