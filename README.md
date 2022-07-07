@@ -5,6 +5,7 @@
 - :mortar_board: estou fazendo graduação em sistemas para interneet com foco em front-end.
 - 📫 Como me contatar:
 - - alexander_felixberger@hotmail.com
+- - https://github.com/AlexanderFelixberger
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 
