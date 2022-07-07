@@ -1,9 +1,5 @@
 ### Eaii! Meu nome é Alexander :snowflake:
 
-<!--
-**AlexanderFelixberger/AlexanderFelixberger** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
 
 - 🌱 Atualmente eu estou estudando HTML, CSS e Javascript.
 - :mortar_board:
@@ -12,4 +8,4 @@ Here are some ideas to get you started:
 - 📫 How to reach me: ...
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
--->
+
