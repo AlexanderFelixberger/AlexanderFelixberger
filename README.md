@@ -10,8 +10,6 @@
 ###
 
 <hr>
-::before
-::after
 </hr
 
 ### What's Up! My name is Alexander :snowflake:
