@@ -1,13 +1,14 @@
 ### Eaii! Meu nome é Alexander :snowflake:
 
 
-- 🌱 Atualmente eu estou estudando HTML, CSS e Javascript.
+- 🌱 Atualmente eu estou estudando HTML, CSS e Javascript
 - :mortar_board: Estou fazendo graduação em sistemas para internet com foco em front-end.
 - 📫 Como me contatar:
 - - alexander_felixberger@hotmail.com
 - - https://github.com/AlexanderFelixberger
-- Eu já trabalhei com Infraestrutura e com suporte e agora buscando mais conhecimento na parte de programação onde estou cada dia mais motivado:fire:
-###
+- Eu já trabalhei com Infraestrutura e com suporte. 
+- Estou em busca do meu primeiro estágio na area de desenvolvimento.
+
 
 <hr>
 </hr
@@ -21,3 +22,4 @@
 - - alexander_felixberger@hotmail.com
 - - https://github.com/AlexanderFelixberger
 - I have already worked with Infrastructure and with support and now looking for more knowledge in the programming part where I am more motivated every day:fire:
+- I'm looking for my first internship in the development area.
