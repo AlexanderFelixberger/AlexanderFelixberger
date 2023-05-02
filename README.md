@@ -23,3 +23,4 @@
 - - https://github.com/AlexanderFelixberger
 - Already worked with Infrastructure and with support and now looking for more knowledge in the programming part where I am more motivated every day:fire:
 - Now looking for my first internship in the development area.
+- DevOps Student
