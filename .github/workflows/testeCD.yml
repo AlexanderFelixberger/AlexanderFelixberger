@@ -1,0 +1,179 @@
+name: Continuous Delivery - All Apps
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  cd_ios:
+    strategy:
+      matrix:
+        app: [base_evompass]
+        include:
+          - app: wl_coordenadaspay
+          - app: wl_passepay
+          - app: wl_sariturpay
+          - app: wl_viajeplaneta
+          - app: wl_cordialpass
+          - app: wl_nubus
+          - app: wl_realita
+          - app: wl_soulpass
+          - app: wl_gardeniapay
+          - app: wl_pagunida
+          - app: wl_santafepay
+          - app: wl_transnortepay
+          - app: wl_grupoouroeprata
+          - app: wl_veneturpay
+          - app: wl_catsulpass
+          - app: wl_paraibunapay
+          - app: wl_costasulpay
+          - app: wl_santacruzpay
+          - app: wl_mobisjc
+          - app: wl_viacaopretti
+          - app: wl_liriopass
+          
+
+    timeout-minutes: 60
+    name: 'CD - ${{ matrix.app }} - iOS'
+    runs-on: [self-hosted, macOS]
+    if: "!contains(github.event.head_commit.message, 'skip cd') && !contains(github.event.head_commit.message, 'skip ios_cd')"
+    steps:
+      - uses: 'actions/checkout@v2'
+        with:
+            fetch-depth: 0
+
+      - name: Set XCode Version
+        run: sudo xcode-select -s /Applications/Xcode_13.4.app
+
+      - name: setup-cocoapods
+        uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          version: 1.11.3
+
+      - name: Run pod repo update
+        run: pod repo update
+        working-directory: ${{ matrix.app }}/ios
+
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '11.x'
+
+      - name: Install bundle 2.1.4
+        run: gem install bundler:2.1.4 --user-install
+        working-directory: '${{ matrix.app }}/ios'
+
+      - name: Print bundle version
+        run: bundle --version
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+          flutter-version: '2.10.5'
+
+      - name: Generate internationalization files (EvomPass)
+        run: flutter pub global activate intl_utils 1.9.0 && flutter pub global run intl_utils:generate
+        working-directory: base_evompass
+
+      - name: Run flutter doctor
+        run: flutter doctor -v
+        working-directory: ${{ matrix.app }}
+
+      - name: 'Run fastlane action - cd'
+        uses: maierj/fastlane-action@v1.4.0
+        with:
+          lane: 'cd'
+          subdirectory: '${{ matrix.app }}/ios'
+          bundle-install-path: 'vendor/bundle'
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          MATCH_BASIC_TOKEN: ${{ secrets.MATCH_BASIC_TOKEN }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+      - name: Run flutter clean
+        run: flutter clean
+        working-directory: ${{ matrix.app }}
+
+
+  clean_ios:
+    needs: cd_ios
+    runs-on: [self-hosted, macOS]
+    steps:
+      - name: Remove Xcode DerivedData
+        run: rm -rf ~/Library/Developer/Xcode/DerivedData
+
+      - name: Remove Xcode Archives
+        run: rm -rf ~/Library/Developer/Xcode/Archives
+
+  cd_android:
+    strategy:
+      matrix:
+        app: [base_evompass]
+        include:
+          - app: wl_coordenadaspay
+          - app: wl_gvbus
+          - app: wl_passepay
+          - app: wl_sariturpay
+          - app: wl_viajeplaneta
+          - app: wl_cordialpass
+          - app: wl_nubus
+          - app: wl_realita
+          - app: wl_soulpass
+          - app: wl_gardeniapay
+          - app: wl_pagunida
+          - app: wl_santafepay
+          - app: wl_transnortepay
+          - app: wl_grupoouroeprata
+          - app: wl_veneturpay
+          - app: wl_catsulpass
+          - app: wl_paraibunapay
+          - app: wl_costasulpay
+          - app: wl_santacruzpay
+          - app: wl_mobisjc
+          - app: wl_viacaopretti
+          - app: wl_liriopass
+
+    timeout-minutes: 60
+    name: 'CD - ${{ matrix.app }} - Android'
+    runs-on: self-hosted
+    if: "!contains(github.event.head_commit.message, 'skip cd') && !contains(github.event.head_commit.message, 'skip android_cd')"
+    steps:
+      - uses: 'actions/checkout@v2'
+        with:
+            fetch-depth: 0
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '11.x'
+
+      - name: Install bundle 2.1.4
+        run: gem install bundler:2.1.4 --user-install
+        working-directory: '${{ matrix.app }}/android'
+
+      - name: Print bundle version
+        run: bundle --version
+  
+      - name: 'Install NDK'
+        run: echo "y" | /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root="/usr/local/lib/android/sdk"
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+          flutter-version: '2.10.5'
+
+      - name: Generate internationalization files (EvomPass)
+        run: flutter pub global activate intl_utils 1.9.0 && flutter pub global run intl_utils:generate
+        working-directory: base_evompass
+
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: ${{ matrix.app }}
+      - name: 'Run fastlane action'
+        uses: maierj/fastlane-action@v1.4.0
+        with:
+          lane: 'cd'
+          subdirectory: '${{ matrix.app }}/android'
+          bundle-install-path: 'vendor/bundle'
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
