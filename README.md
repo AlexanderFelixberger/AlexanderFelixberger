@@ -2,7 +2,7 @@
 
 
 - 🌱 Atualmente eu estou estudando HTML, CSS e Javascript
-- :mortar_board: Estou fazendo graduação em sistemas para internet com foco em front-end.
+- :mortar_board: Estou fazendo graduação em computação em nuvem.
 - 📫 Como me contatar:
 - - alexander_felixberger@hotmail.com
 - - https://github.com/AlexanderFelixberger
@@ -17,7 +17,7 @@
 
 
 - 🌱 Currently studying HTML, CSS and Javascript.
-- I'm doing it:mortar_board: I'm doing it on internet systems with a front-end focus.
+- I'm doing it:mortar_board: I'm doing it on cloud computing
 - 📫 How to contact me:
 - - alexander_felixberger@hotmail.com
 - - https://github.com/AlexanderFelixberger
