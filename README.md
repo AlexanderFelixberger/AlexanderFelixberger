@@ -1,7 +1,7 @@
 ### Eaii! Meu nome é Alexander :snowflake:
 
 
-- 🌱 Atualmente eu estou estudando HTML, CSS e Javascript
+- 🌱 Atualmente eu estou estudando Cloud e Devops
 - :mortar_board: Estou fazendo graduação em computação em nuvem.
 - 📫 Como me contatar:
 - - alexander_felixberger@hotmail.com
@@ -16,7 +16,7 @@
 ### What's Up! My name is Alexander :snowflake:
 
 
-- 🌱 Currently studying HTML, CSS and Javascript.
+- 🌱 Currently studying Cloud and Devops
 - I'm doing it:mortar_board: I'm doing it on cloud computing
 - 📫 How to contact me:
 - - alexander_felixberger@hotmail.com
